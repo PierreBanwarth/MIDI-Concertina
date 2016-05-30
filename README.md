@@ -6,9 +6,9 @@ Goal is to play by night with my headphones for my neighboors and maybe with my 
 
 Arduino =>( midi library )  Serial port ( hairless midi serial ) => midi port ( loopMidi ) => Fruity Loops / Ableton / ...
 
-We chose this solution because it's the most generic you can interface with 
+We chose this solution because it's the most generic you can interface with
 
-I use two arduinos (uno and nano) 
+I use two arduinos (uno and nano)
 
 With MIDILibrary (very easy to use for outputs)
 http://playground.arduino.cc/Main/MIDILibrary
@@ -16,6 +16,8 @@ http://playground.arduino.cc/Main/MIDILibrary
 Good for interface with a virtual midi port and to test while developing
 http://projectgus.github.io/hairless-midiserial/
 
-to test and interface with Hairless Midi <-> Serial 
+to test and interface with Hairless Midi <-> Serial
 http://www.tobias-erichsen.de/software/loopmidi.html
 
+this project is developed with platformIO file structure.
+http://platformio.org/
