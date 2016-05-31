@@ -92,22 +92,23 @@ void note(uint8_t bouton, uint8_t sens_soufflet, uint8_t noteA, uint8_t noteB, u
     }
   }
 }
-//main droite
-//
-// {23,26,31,25,38,12,19,24,28,31,16,21,25,33,32}
-// {26,30,33,36,40,19,23,26,29,33,17,22,27,31,34}
-//
-// main gauche
-//
-// {43, 47, 50, 55, 59,  36, 40, 43, 48, 52, 37, 45, 44, 49, 53 }
-// {42, 45, 48, 52, 54,  35, 38, 41, 45, 47, 39, 43, 46, 51, 57 }
+
+
 void loop()
 {
-  int  etatButton[]= {digitalRead(2),digitalRead(3), digitalRead(4),digitalRead(5),digitalRead(6), digitalRead(7),digitalRead(8), digitalRead(9), digitalRead(10), digitalRead(11), digitalRead(12), digitalRead(A0), digitalRead(A1), digitalRead(A2), digitalRead(A3)};
-  //int etatButton[]= {digitalRead(A0), digitalRead(A1), digitalRead(A2),digitalRead(A3), digitalRead(A4),digitalRead(12),digitalRead(13), digitalRead(2),digitalRead(3), digitalRead(4), digitalRead(5), digitalRead(6), digitalRead(7), digitalRead(8), digitalRead(9)};
 
-  uint8_t pousser[] ={43, 47, 50, 55, 59,  36, 40, 43, 48, 52, 37, 45, 44, 49, 53 };
-  uint8_t tirer[]   = {42, 45, 48, 52, 54,  35, 38, 41, 45, 47, 39, 43, 46, 51, 57 };
+  // main gauche
+  // uint8_t pousser[] ={43, 47, 50, 55, 59,  36, 40, 43, 48, 52, 37, 45, 44, 49, 53 };
+  // uint8_t tirer[]   = {42, 45, 48, 52, 54,  35, 38, 41, 45, 47, 39, 43, 46, 51, 57 };
+  //int etatButton[]= {digitalRead(A0), digitalRead(A1), digitalRead(A2),digitalRead(A3), digitalRead(A4),digitalRead(12),digitalRead(13), digitalRead(2),digitalRead(3), digitalRead(4), digitalRead(5), digitalRead(6), digitalRead(7), digitalRead(8), digitalRead(9)};
+  
+  //main droite
+  uint8_t pousser[] = {23,26,31,25,38,12,19,24,28,31,16,21,25,33,32};
+  uint8_t tirer[] = {26,30,33,36,40,19,23,26,29,33,17,22,27,31,34};
+  int  etatButton[]= {digitalRead(2),digitalRead(3), digitalRead(4),digitalRead(5),digitalRead(6), digitalRead(7),digitalRead(8), digitalRead(9), digitalRead(10), digitalRead(11), digitalRead(12), digitalRead(A0), digitalRead(A1), digitalRead(A2), digitalRead(A3)};
+
+
+
   uint8_t poussertirer = digitalRead(A4);
   //velocity of MIDI notes, must be between 0 and 127
   //higher velocity usually makes MIDI instruments louder
