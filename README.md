@@ -21,3 +21,13 @@ http://www.tobias-erichsen.de/software/loopmidi.html
 
 this project is developed with platformIO file structure.
 http://platformio.org/
+
+After the V1 done (whithout air sensor) it's look my buttons was very bad and not speed enough to play music so i have ordered some Cherry mx black keys 
+
+I have done my custom keyboard here 
+http://www.keyboard-layout-editor.com/#/
+
+and use it to create the grid to plate mounted switches
+http://builder.swillkb.com/
+
+
