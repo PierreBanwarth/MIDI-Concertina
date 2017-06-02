@@ -30,4 +30,8 @@ http://www.keyboard-layout-editor.com/#/
 and use it to create the grid to plate mounted switches
 http://builder.swillkb.com/
 
-
+I've write tutorials here :
+In english
+https://www.instructables.com/id/Make-Your-MIDI-Accordion/
+In french
+https://ouiaremakers.com/posts/tutoriel-diy-creation-d-un-accordeon-midi
