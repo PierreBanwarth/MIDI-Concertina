@@ -9,10 +9,6 @@ Arduino =>( midi library )  Serial port ( hairless midi serial ) => midi port ( 
 
 We chose this solution because it's the most generic you can interface with
 
-===============================NEW================================================
-I'm actually trying to make a custom PCB for both hands, and maybe adding a pressure sensor to put in a real instrument
-==================================================================================
-
 I use two arduinos (nano)
 
 With MIDILibrary (very easy to use for outputs)
@@ -40,3 +36,36 @@ In english
 https://www.instructables.com/id/Make-Your-MIDI-Accordion/
 In french
 https://ouiaremakers.com/posts/tutoriel-diy-creation-d-un-accordeon-midi
+
+
+======================================================================NEW================================================
+I'm actually trying to make a custom PCB for both hands, and maybe adding a pressure sensor to put in a real instrument
+=========================================================================================================================
+Some personnal note in french about the new version 
+
+=?= capteur de pression  =?=
+    
+comment partager l'info du bmp 280 ?
+combien d'entrée ça prend un bmp 280 ?
+pour avoir une valeur normative on pourrait faire un differenciel avec un autre bmp 280 placé dans le clavier
+dans les deux cas comment on fait passer la même info des deux côtés de l'instrument ?
+    
+=?= question physiques  =?=
+
+ cableries avec étanchéité ?
+deux cables USB doivent sortir de l'instrument et ça que d'un côté ? Creer un cable USB custom
+Un trou de taille variable pourrait permettre de tester les influences différentes d'un trou qui simule un bouton ouvert.
+Gestion de l'air on passe de pousser/tirer a pousser/rien/tirer
+
+=?= clavier  =?=
+
+Boutons custom ?
+Cercle silicon ? 
+lubrification des boutons ?
+achat de clip qui se posent sur le switch avec 30% de réduction du bruit ?
+    
+=?= Couleurs  =?=
+
+Un noir mat serait cool pour un instrument de couleur uniforme
+LED ? on pourrait ajouter un arduino pour gerer les leds eventuels ?
+
