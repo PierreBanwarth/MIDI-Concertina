@@ -45,14 +45,13 @@ Some personnal note in french about the new version
 =?= capteur de pression  =?=
     
 - comment partager l'info du bmp 280 ?
-- combien d'entrée ça prend un bmp 280 ? Réponse : 2
+- combien d'entrée ça prend un bmp 280 ? Réponse : 4
 - pour avoir une valeur normative on pourrait faire un differenciel avec un autre bmp 280 placé dans le clavier
 - dans les deux cas comment on fait passer la même info des deux côtés de l'instrument ?
     
 =?= question physiques  =?=
 
 - cableries avec étanchéité ?
-- deux cables USB doivent sortir de l'instrument et ça que d'un côté ? Creer un cable USB custom
 - Un trou de taille variable pourrait permettre de tester les influences différentes d'un trou qui simule un bouton ouvert.
 - Gestion de l'air on passe de pousser/tirer a pousser/rien/tirer
 
@@ -65,7 +64,22 @@ https://www.massdrop.com/buy/gateron-switches
 - achat de clip qui se posent sur le switch avec 30% de réduction du bruit ?
     
 =?= Couleurs  =?=
-
-- Un noir mat serait cool pour un instrument de couleur uniforme
 - LED ? on pourrait ajouter un arduino pour gerer les leds eventuels ?
 
+RASPBERRY integration
+- Deux boards FTDI 
+    -> par défaut branché au raspberry
+    -> si branché a un pc raspberry annulé
+    
+- Une batterie
+    -> branché au raspberry
+    -> bouton on/off pour l'alimentation 
+    -> sortie de recharge en exterieur
+- Sortie casque
+
+sorties prévues en facade : 
+    -> sortie casque (output son raspberry)
+    -> prise usb 1 (pour arduino 1)
+    -> prise usb 2 (pour arduino 2)
+    -> prise usb 3 pour recharge batterie du raspberry
+    -> switch on/off pour alimentation raspberry
