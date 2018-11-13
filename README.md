@@ -68,18 +68,24 @@ https://www.massdrop.com/buy/gateron-switches
 
 RASPBERRY integration
 - Deux boards FTDI 
-    -> par défaut branché au raspberry
-    -> si branché a un pc raspberry annulé
+    - par défaut branché au raspberry
+    - si branché a un pc raspberry annulé
     
 - Une batterie
-    -> branché au raspberry
-    -> bouton on/off pour l'alimentation 
-    -> sortie de recharge en exterieur
+    - branché au raspberry
+    - bouton on/off pour l'alimentation 
+    - sortie de recharge en exterieur
 - Sortie casque
 
 sorties prévues en facade : 
-    -> sortie casque (output son raspberry)
-    -> prise usb 1 (pour arduino 1)
-    -> prise usb 2 (pour arduino 2)
-    -> prise usb 3 pour recharge batterie du raspberry
-    -> switch on/off pour alimentation raspberry
+    - sortie casque (output son raspberry)
+    - prise usb 1 (pour arduino 1)
+    - prise usb 2 (pour arduino 2)
+    - prise usb 3 pour recharge batterie du raspberry
+    - switch on/off pour alimentation raspberry
+
+intérèt d'imprimer une version test sans soupape du boitier imprimé en 3D
+- tester et valider la forme des boites
+- tester et valider les entrées et les boutons
+- valider installation capteur de préssion
+- tester pour savoir ce qu'on peux ajouter et comment
