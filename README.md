@@ -233,7 +233,7 @@ Avant de réaliser un circuit bien penser a tester, je me suis fait un petit exc
 Pour réaliser le circuit je me suis inspiré de ça :
 https://github.com/ruiqimao/keyboard-pcb-guide
 
-Après sur l'utilisation de KiCad et LibreCad c'est long, dur, ingras. 
+Après sur l'utilisation de KiCad et LibreCad c'est long, dur, ingras.
 
 Un peu compliqué de créer un circuit quand tu as rapidement bidouillé des Arduinos et que tu passes en mode ingenierie serieuse et définitive (20$ par essai).
 
@@ -258,7 +258,6 @@ Parlons du prix de tout ça maintenant:
 * 2 sangles en cuir : 30$
 
 Soit pour l'instant 306 euros on peux distinguer le cout R&D et le cout réel de l'objet
-
 Le prix d'un soufflet et de la mécanique soupape est exclu :
 
 ### Cout d'un concertina MIDI
@@ -275,7 +274,22 @@ Le prix d'un soufflet et de la mécanique soupape est exclu :
      * 2 repose poignet (design + impression) : 10$
 * Total : 235$
 
+## Reflexion sur la V3.5
+Le but serait ici de rajouter un raspberry, une batterie et son systeme de rechargement + gestion ON/OFF
+On pourrait ainsi jouer au casque directement sur l'instrument. De plus brancher deux cables en facades en direction d'un ordinateur nous permettra d'utiliser l'instrument avec Ableton etc..
 
+- [ ] Rechargement de la batterie
+- [ ] Capacité de la batterie minimal de 5h
+- [ ] Possibilité de faire On/Off sur l'alimentation
+- [ ] Couper la liaison Arduino -> Raspberry quand on plug un Arduino -> PC
+- [ ] que toute les prises soit sur la même face de l'hexagone.
+
+sorties prévues en facade :
+- sortie casque (output son raspberry)
+- prise usb 1 (pour arduino 1)
+- prise usb 2 (pour arduino 2)
+- prise usb 3 pour recharge batterie du raspberry
+- switch on/off pour alimentation raspberry
 
 
 =?= capteur de pression=?=
@@ -314,12 +328,6 @@ RASPBERRY integration
 - sortie de recharge en exterieur
 - Sortie casque
 
-sorties prévues en facade :
-- sortie casque (output son raspberry)
-- prise usb 1 (pour arduino 1)
-- prise usb 2 (pour arduino 2)
-- prise usb 3 pour recharge batterie du raspberry
-- switch on/off pour alimentation raspberry
 
 intérèt d'imprimer une version test sans soupape du boitier imprimé en 3D
 - tester et valider la forme des boites
