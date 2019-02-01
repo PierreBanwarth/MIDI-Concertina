@@ -10,8 +10,6 @@ We chose this solution because it's the most generic you can interface with
 
 I use two arduinos (nano)
 
-
-
 this project is developed with platformIO file structure.
 http://platformio.org/
 
@@ -84,7 +82,6 @@ Soucis rencontrés avec ce modèle : le clavier etait souder sans PCB donc par d
 Au niveau du temps et des manipulations ça s'est averé plutot fragile (malgré l'intervention d'un ami electronicien)
 L'avantage du clavier de CONCERTINA-MIDI-V3 c'est que le PCB va finir de stabiliser les boutons
 
-
 ## Note sur le soufflet :
 N'ayant qu'un seul concertina à cet époque la j'ai eu plusieurs idée de réalisation de soufflet custom.
 
@@ -94,23 +91,6 @@ Bouton d'arcade : pas mal mais placé au mauvais endroit (sous la paume)
 Joystick : contre intuitif mais interessant de par les deux axes (mais on sort de l'idée de reproduction d'accordéon.)
 Cherry MX : parce que finalement c'est les meilleurs boutons qu'on puisse trouver j'ai réussi a en placer un sous mon pouce et c'etait plutôt efficace.
 Cependant en 2017 j'ai acheté un nouveau concertina. Me laissant du coup l'ancien modèle libre. On en reparlera quand on evoquera l'impression 3D
-
-## Impression 3D :
-C'est en arrivant vivre à Rennes que j'ai découvert l'imprimante 3D d'un ami.
-[PHOTO DU TRUMP 3D]
-
-J'en ai acheté une peux de temps après, j'ai cependant fait l'erreure d'acheter une Geeetech I3 PRO B que je n'ai jamais vraiment réussi a maitriser.
-[PHOTO DE MON IMPRIMANTE]
-
-J'ai donc fini par prendre contact avec un imprimeur sur Rennes (https://www.hephaprint.fr/)
-Au début l'idée c'était de faire une grille spécial pour mon nouveau concertina et c'etait l'occasion de faire connaissance :
-[PHOTO DU CONCERTINA BLEU]
-
-C'est un peu plus tard que je me suis rendu compte que si on pouvais imprimer le haut du boitier on pouvais du coup faire le bas
-Et ainsi mettre le clavier déja réalisé dans une boite étanche et a la taille exact du soufflet.
-Ce qui finalement nous permettrait de mettre un capteur de préssion pour gagner en réalisme.
-Nous avons donc pris les côtes de mon premier concertina et réalisé un boitié en PET.
-[PHOTO DE LA BOITE NOIRE]
 
 ## OPEN SOURCE MIDI :
 Attiré depuis le début par la réalisation d'un projet a 100% Open Source et Open Hardware
@@ -155,9 +135,33 @@ https://www.tindie.com/
 peut etre aussi une solution du style Pay me a coffee.
 
 ## GESTION DU SOUFFLE
+  On a vu à travers l'impression 3D qu'on pouvais enfin sans abimer l'ancien concertina recreer des boitiers
+  On peux donc placer un capteur de préssion.
+  Mais on doit faire attention a la circulation de l'air :
+    - attention a laisser passer de l'air (comme si on appuyais en permanence sur un bouton)
+    - laisser passer de l'air implique une soupape (Gros trou ouvrable a l'aide d'un bouton pour reprendre ou relacher beaucoup d'air d'un coup)
 
-## CONCERTINA MIDI V3.1
+# CONCERTINA MIDI V3.1
+Le nouvelle version comporte deux avancés majeurs :
+* gestion de l'air réaliste
+* circuit imprimé pour les boutons et le BME280
 
+## Impression 3D :
+C'est en arrivant vivre à Rennes que j'ai découvert l'imprimante 3D d'un ami.
+[PHOTO DU TRUMP 3D]
+
+J'en ai acheté une peux de temps après, j'ai cependant fait l'erreure d'acheter une Geeetech I3 PRO B que je n'ai jamais vraiment réussi a maitriser.
+[PHOTO DE MON IMPRIMANTE]
+
+J'ai donc fini par prendre contact avec un imprimeur sur Rennes (https://www.hephaprint.fr/)
+Au début l'idée c'était de faire une grille spécial pour mon nouveau concertina et c'etait l'occasion de faire connaissance :
+[PHOTO DU CONCERTINA BLEU]
+
+C'est un peu plus tard que je me suis rendu compte que si on pouvais imprimer le haut du boitier on pouvais du coup faire le bas
+Et ainsi mettre le clavier déja réalisé dans une boite étanche et a la taille exact du soufflet.
+Ce qui finalement nous permettrait de mettre un capteur de préssion pour gagner en réalisme.
+Nous avons donc pris les côtes de mon premier concertina et réalisé un boitié en PET.
+[PHOTO DE LA BOITE NOIRE]
 
 ## MY OWN PCB
 Petit feedback sur la réalisation d'un circuit imprimé pour les boutonsn, le capteur de préssion et l'arduino
@@ -172,10 +176,11 @@ Avant de réaliser un circuit bien penser a tester, je me suis fait un petit exc
 Pour réaliser le circuit je me suis inspiré de ça :
 https://github.com/ruiqimao/keyboard-pcb-guide
 
-Après sur l'utilisation de KiCad et LibreCad c'est long, dur, ingras. Un peu compliqué de créer un circuit quand tu as rapidement bidouillé des Arduinos et que tu passes en mode ingenierie serieuse et définitivé (20$ par essai)
+Après sur l'utilisation de KiCad et LibreCad c'est long, dur, ingras. Un peu compliqué de créer un circuit quand tu as rapidement bidouillé des Arduinos et que tu passes en mode ingenierie serieuse et définitive (20$ par essai).
+la grande difficulté de ce projet c'est la maitrise des outils logiciels.
 
+## Prix de la V3
 Parlons du prix de tout ça maintenant:
-
 ### Frais déja engagés
 
 * 3 Arduino PRO (un est deja décédé (inversion gnd et 5v sur le BME280) : EUR 15,99
@@ -207,7 +212,7 @@ Le prix d'un soufflet et de la mécanique soupape est exclu :
 * Impression 3D :
      * 2 Boitiers (design + impression) : 70$
      * 2 repose poignet (design + impression) : 10$
-Total : 235$
+* Total : 235$
 
 
 
