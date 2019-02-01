@@ -178,35 +178,35 @@ Parlons du prix de tout ça maintenant:
 
 ### Frais déja engagés
 
-- 3 Arduino PRO (un est deja décédé (inversion gnd et 5v sur le BME280) : EUR 15,99
-- 2 capteurs de Pression BME280EUR 6,76
-- 40 switchs cherry Mx : 40$
-- 2 Boitiers (design + impression) : 70$
-- 2 repose poignet (design + impression) : 10$
-- 2 Grilles test pour validation dxf grille : 25$
-- 10 PCB Grille v2.9 : 25$
-- 10 PCB Grille v3.0 : 25$
+* 3 Arduino PRO (un est deja décédé (inversion gnd et 5v sur le BME280) : EUR 15,99
+* 2 capteurs de Pression BME280EUR 6,76
+* 40 switchs cherry Mx : 40$
+* 2 Boitiers (design + impression) : 70$
+* 2 repose poignet (design + impression) : 10$
+* 2 Grilles test pour validation dxf grille : 25$
+* 10 PCB Grille v2.9 : 25$
+* 10 PCB Grille v3.0 : 25$
 
-=== frais à Engager : ===
-- 10 PCB Grille V3.1 : 25$
-- 2 Grilles découpe laser : 50$
-- 2 sangles en cuir : 30$
+### frais à Engager :
+* 10 PCB Grille V3.1 : 25$
+* 2 Grilles découpe laser : 50$
+* 2 sangles en cuir : 30$
 
 Soit pour l'instant 306 euros on peux distinguer le cout R&D et le cout réel de l'objet
 Le prix d'un soufflet et de la mécanique soupape est exclu :
 
-=== Cout d'un concertina MIDI ===
-Composant electroniques
-- 2 Arduino Pro : 10$
-- 2 capteurs de Pression BME280 : 10$
-- 10 PCB Grille V3.1 : 25$
-- 30 switchs cherry Mx : 30$
-- 2 Grilles découpe laser : 50$
-Cordonnerie :
-- 2 sangles en cuir : 30$
-Impression 3D :
-- 2 Boitiers (design + impression) : 70$
-- 2 repose poignet (design + impression) : 10$
+### Cout d'un concertina MIDI
+* Composant electroniques
+     * 2 Arduino Pro : 10$
+     * 2 capteurs de Pression BME280 : 10$
+     * 10 PCB Grille V3.1 : 25$
+     * 30 switchs cherry Mx : 30$
+     * 2 Grilles découpe laser : 50$
+* Cordonnerie :
+     * 2 sangles en cuir : 30$
+* Impression 3D :
+     * 2 Boitiers (design + impression) : 70$
+     * 2 repose poignet (design + impression) : 10$
 Total : 235$
 
 
