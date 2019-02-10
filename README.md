@@ -239,6 +239,27 @@ Un peu compliqué de créer un circuit quand tu as rapidement bidouillé des Ard
 
 la grande difficulté de ce projet c'est la maitrise des outils logiciels.
 
+## Placer le circuit sur la grille du concertina.
+
+Une fois le PCB crée il faut réaliser la grille en métal dans laquelle iront se loger les boutons
+pour ça j'ai extrait dans un dxf le haut du boitié réalisé avec l'imprimeur 3D
+une fois supprimé les détails inutils pour la grille j'ai intégré une extraction de la couche F.Skills de mon projet KiCad
+
+## Raspberry PI 
+J'ai récemment réfléchie a une nouvelle solution ou le raspberry Pi centraliserais les entrées des différents arduino 
+via un programme python je récupere les entrées MIDI des deux Arduino 
+Un switch ON/Off 
+- ON : on envoie du son via la prise jack raspberry 
+- OFF : on envoie du MIDI via une prise USB
+
+## Test 
+Pour tester le capteur de préssion on va essayer de voir les différentes variations de préssions a l'interieur de l'instrument 
+Pour cette experience j'ai mis une des anciennes mains présentes sur mon instrument d'origine et j'ai mis un boitié imprimé en 3D.
+J'ai tenté de boucher les entrées / sorties d'air de la version imprimé en 3D et j'ai placé le capteur de préssion 
+
+TODO poster ici les courbes de pression 
+
+
 ## Prix de la V3
 Parlons du prix de tout ça maintenant:
 ### Frais déja engagés
