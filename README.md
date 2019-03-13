@@ -1,5 +1,4 @@
-![alt text](https://raw.githubusercontent.com/PierreBanwarth/MIDI-concertina/blob/master/plans/hje922rq9pk21.jpg)
-
+![alt text](https://github.com/PierreBanwarth/MIDI-concertina/blob/master/plans/hje922rq9pk21.jpg)
 # MIDI-concertina
 
 This is The Github project wich his a personnal work about Making an electronic version of my concertina,
