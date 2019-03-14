@@ -369,3 +369,5 @@ Point d'avancement 01/02/2019 :
 
 Le prototype de boite 3D semble parfait pour l'usage qu'on en fait j'irais chercher la deuxieme boite bientôt.
 Le PCB changeant régulierement le travail sur le dessin de la grille se retrouve toujours décallé a plus tard.
+
+Alors 13, 16 et 17 c'est des entrées de merdes qui marchent pas comme des grosses connasses
