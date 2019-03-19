@@ -245,19 +245,19 @@ Une fois le PCB crée il faut réaliser la grille en métal dans laquelle iront 
 pour ça j'ai extrait dans un dxf le haut du boitié réalisé avec l'imprimeur 3D
 une fois supprimé les détails inutils pour la grille j'ai intégré une extraction de la couche F.Skills de mon projet KiCad
 
-## Raspberry PI 
-J'ai récemment réfléchie a une nouvelle solution ou le raspberry Pi centraliserais les entrées des différents arduino 
-via un programme python je récupere les entrées MIDI des deux Arduino 
-Un switch ON/Off 
-- ON : on envoie du son via la prise jack raspberry 
+## Raspberry PI
+J'ai récemment réfléchie a une nouvelle solution ou le raspberry Pi centraliserais les entrées des différents arduino
+via un programme python je récupere les entrées MIDI des deux Arduino
+Un switch ON/Off
+- ON : on envoie du son via la prise jack raspberry
 - OFF : on envoie du MIDI via une prise USB
 
-## Test 
-Pour tester le capteur de préssion on va essayer de voir les différentes variations de préssions a l'interieur de l'instrument 
+## Test
+Pour tester le capteur de préssion on va essayer de voir les différentes variations de préssions a l'interieur de l'instrument
 Pour cette experience j'ai mis une des anciennes mains présentes sur mon instrument d'origine et j'ai mis un boitié imprimé en 3D.
-J'ai tenté de boucher les entrées / sorties d'air de la version imprimé en 3D et j'ai placé le capteur de préssion 
+J'ai tenté de boucher les entrées / sorties d'air de la version imprimé en 3D et j'ai placé le capteur de préssion
 
-TODO poster ici les courbes de pression 
+TODO poster ici les courbes de pression
 
 
 ## Prix de la V3
@@ -368,3 +368,11 @@ Point d'avancement 01/02/2019 :
 
 Le prototype de boite 3D semble parfait pour l'usage qu'on en fait j'irais chercher la deuxieme boite bientôt.
 Le PCB changeant régulierement le travail sur le dessin de la grille se retrouve toujours décallé a plus tard.
+
+
+BUILD LOG
+
+Faire un journal de bord c'est se rendre compte qu'on aurais du écouter les gens qui nous ont conseillés
+cependant il semble que la pin13 de l'arduino soit reconnu a l'etat LOW a cause d'une resistance et d'une LED qui y sont branchés
+https://forum.arduino.cc/index.php?topic=328387.0
+Visiblement il se peux que rajouter une resistance dans le circuit puisse changer la donne.

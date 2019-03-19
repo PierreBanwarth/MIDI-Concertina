@@ -7,9 +7,9 @@ BME280 capteur;
 int nbCaptureInit = 10;
 float pressionBasicValue=0;
 
-uint8_t pinButton[] = {2,3,4,5,6,7,8,9,10,11,12,13,A0,A1,A2,A3,A6,A7};
+uint8_t pinButton[] = {0,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19};
                      //2,3,4,5,6,7,8,9,10,11,12,14,15,16,17
-int8_t buttonTabSize = 18;
+int8_t buttonTabSize = 21;
 uint8_t pousser[] = {49,57,56,61,65,48,52,55,60,64,55,59,62,67,71};
 uint8_t tirer[]   = {51,53,58,63,69,47,50,53,57,59,54,57,60,64,66};
 
@@ -25,9 +25,7 @@ void setup() {
     digitalWrite(pinButton[i],HIGH);
   }
   Serial.begin(9600);
-  while (!Serial) {
-    // Attente de l'ouverture du port série pour Arduino LEONARDO
-  }
+  
   //configuration du capteur
   capteur.settings.commInterface = I2C_MODE;
   capteur.settings.I2CAddress = 0x76;
@@ -45,21 +43,26 @@ void setup() {
   for (size_t i = 0; i < nbCaptureInit; i++) {
     /* code */
     pressionBasicValue += capteur.readFloatPressure();
+
+      Serial.print("test");
     delay(20);
   }
   pressionBasicValue = pressionBasicValue/nbCaptureInit;
 }
 
 void loop() {
+  Serial.print("test");
   float value = capteur.readFloatPressure();
   float differencial = value-pressionBasicValue;
   // boucle de lecture des touches
-  for (size_t i = 0; i < buttonTabSize; i++) {
+  for (int i = 0; i < buttonTabSize; i++) {
     uint8_t bouton = digitalRead(pinButton[i]);
     if(bouton == LOW){
       Serial.println("====================================================================");
       Serial.print("-> ");
       Serial.print(pinButton[i]);
+      Serial.print("           ");
+      Serial.print(i);
       Serial.println("");
       if(differencial < -10.0){
         Serial.println("-> Tirer\n");
@@ -71,9 +74,5 @@ void loop() {
         Serial.println("");
       }
     }
-
-
   }
-
-
 }
