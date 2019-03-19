@@ -1,0 +1,51 @@
+{
+    "name": "Sparkfun BMP180", 
+    "version": "1.1.2", 
+    "keywords": [
+        "signal", 
+        "input", 
+        "output"
+    ], 
+    "description": "Sparkfun examples for the Bosch BMP180 barometric pressure sensor", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "platforms": [
+        "atmelavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "intel_arc32", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "authors": [
+        {
+            "email": null, 
+            "url": null, 
+            "maintainer": true, 
+            "name": "SparkFun Electronics"
+        }
+    ], 
+    "repository": {
+        "type": "git", 
+        "url": "https://github.com/sparkfun/BMP180_Breakout_Arduino_Library"
+    }, 
+    "homepage": "https://github.com/sparkfun/BMP180_Breakout", 
+    "export": {
+        "include": null, 
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ]
+    }, 
+    "id": 5684
+}
