@@ -4,7 +4,10 @@
 
 Bienvenue a toi visiteur du breizhcamp
 ce projet github a pour objectif de recreer un accordéon en version MIDI 
-Mais la carte que j'ai laissé permet de faire un pad avec 15 boutons (cherry MX) et un arduino pro 
+
+Mais la carte que j'ai laissé à été réalisé pour ce projet via KiCad, 
+
+Elle permet de réaliser un Pad MIDI ou non avec 15 boutons (cherry MX) et un arduino pro 
 
 Pour plus d'instructions n'hesitez pas a faire une issue ou a me contacter directement
 
