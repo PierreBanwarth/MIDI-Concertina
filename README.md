@@ -1,4 +1,6 @@
-#Hi breizhcamp
+![Accordéon MIDI](ezk04t8v1pk21.jpg)
+
+# Hi breizhcamp
 
 Bienvenue a toi visiteur du breizhcamp
 ce projet github a pour objectif de recreer un accordéon en version MIDI 
