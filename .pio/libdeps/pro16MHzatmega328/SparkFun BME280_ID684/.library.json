@@ -1,0 +1,54 @@
+{
+    "description": "A library to drive the Bosch BME280 Altimeter and Pressure sensor", 
+    "repository": {
+        "url": "https://github.com/sparkfun/SparkFun_BME280_Arduino_Library", 
+        "type": "git"
+    }, 
+    "platforms": [
+        "atmelavr", 
+        "atmelmegaavr", 
+        "atmelsam", 
+        "espressif32", 
+        "espressif8266", 
+        "gd32v", 
+        "infineonxmc", 
+        "intel_arc32", 
+        "kendryte210", 
+        "microchippic32", 
+        "nordicnrf51", 
+        "nordicnrf52", 
+        "ststm32", 
+        "ststm8", 
+        "teensy", 
+        "timsp430"
+    ], 
+    "export": {
+        "exclude": [
+            "extras", 
+            "docs", 
+            "tests", 
+            "test", 
+            "*.doxyfile", 
+            "*.pdf"
+        ], 
+        "include": null
+    }, 
+    "authors": [
+        {
+            "maintainer": true, 
+            "name": "SparkFun Electronics", 
+            "url": null, 
+            "email": "sparkfun.com"
+        }
+    ], 
+    "keywords": [
+        "sensors"
+    ], 
+    "id": 684, 
+    "name": "SparkFun BME280", 
+    "frameworks": [
+        "arduino"
+    ], 
+    "version": "2.0.8", 
+    "homepage": null
+}
