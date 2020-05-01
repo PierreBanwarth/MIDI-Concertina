@@ -31,25 +31,21 @@ uint8_t pinButton[] = {2,3,4,5,6,7,8,9,10,11,12,14,15,16,17};
 
 uint8_t initCountSetup = 32;
 uint8_t pressureLiveMesure = 4;
-float Calib_Pressure = 0;
-byte pressureLowLimit = 15;
-int oldPressure;
 
 
-//pressure variables
-float Pressure;
+MIDI_CREATE_INSTANCE(HardwareSerial, Serial, MIDI);
+
+
 int Pressure_Delta;
 
-//timing variables
-unsigned long initial_us = 0;
-unsigned long final_us = 0;
 int curr_velocity = 127;
 int velocity = 127;
 boolean velocity_active = false;
 
-int prev_velocity = 127;
+//pressure variables
+double Calib_Pressure, Pressure;
 
-MIDI_CREATE_INSTANCE(HardwareSerial, Serial, MIDI);
+
 
 void setup() {
   // Configuration de la broche 12 en tant qu'entree numerique.
@@ -62,43 +58,13 @@ void setup() {
      Serial.begin(115200);
   }
   // for testing function
-  pinMode(2,INPUT);
-  digitalWrite(2,HIGH);
-  pinMode(3,INPUT);
-  digitalWrite(3,HIGH);
-  pinMode(4,INPUT);
-  digitalWrite(4,HIGH);
-  pinMode(5,INPUT);
-  digitalWrite(5,HIGH);
-  pinMode(6,INPUT);
-  digitalWrite(6,HIGH);
-  pinMode(7,INPUT);
-  digitalWrite(7,HIGH);
-  pinMode(8,INPUT);
-  digitalWrite(8,HIGH);
-  pinMode(9,INPUT);
-  digitalWrite(9,HIGH);
-  pinMode(10,INPUT);
-  digitalWrite(10,HIGH);
-  pinMode(11,INPUT);
-  digitalWrite(11,HIGH);
-  pinMode(12,INPUT);
-  digitalWrite(12,HIGH);
-  pinMode(13,INPUT);
-  digitalWrite(13,HIGH);
-  pinMode(A0,INPUT);
-  digitalWrite(A0,HIGH);
-  pinMode(A1,INPUT);
-  digitalWrite(A1,HIGH);
-  pinMode(A2,INPUT);
-  digitalWrite(A2,HIGH);
-  pinMode(A3,INPUT);
-  digitalWrite(A3,HIGH);
-  pinMode(A4,INPUT);
-  digitalWrite(A4,HIGH);
+  for (size_t pin = 0; pin < 15; pin++) {
+    /* code */
+    pinMode(pinButton[pin],INPUT);
+    digitalWrite(pinButton[pin],HIGH);
 
-  pinMode(A5,INPUT);
-  digitalWrite(A5,HIGH);
+  }
+
   while (!Serial) {
     // Attente de l'ouverture du port série pour Arduino LEONARDO
   }
@@ -122,74 +88,7 @@ void setup() {
   }
   Calib_Pressure = sumPressureValueSetup / initCountSetup;
   Calib_Pressure = Calib_Pressure;
-  oldPressure = 0;
 
-}
-
-void test_curve(int pressure, int Pressure_Delta, int velocity){
-  Serial.print(pressure);
-  Serial.print(',');
-  Serial.print(Pressure_Delta);
-  Serial.print(',');
-  Serial.println(velocity);
-}
-
-int velocity_jason() {
-  Pressure = capteur.readFloatPressure();
-  //not sure where these numbers come from...
-  //the final divisor differs between pulling the bellows out (45) and pushing them in (40)
-  if (Pressure <= Calib_Pressure){
-    Pressure_Delta = int(float((pow((Calib_Pressure - Pressure),1.4)+280)/48));
-  }
-  else if (Pressure > Calib_Pressure){
-    Pressure_Delta = int(float((pow((Pressure - Calib_Pressure),1.4)+280)/48));
-  }
-  if (Pressure_Delta > 127){
-    Pressure_Delta = 127;
-  }
-
-  // setting up minimal pressure to start a sound
-  // setting controller to zero once it got to zero
-  if (Pressure_Delta < 7){
-    curr_velocity = 0;
-  }
-  else if (Pressure_Delta >= 7) {
-    velocity = Pressure_Delta;
-    curr_velocity = velocity;
-  }
-  if(DEBUG){
-    test_curve(Pressure, Pressure_Delta, curr_velocity);
-  }
-  return curr_velocity;
-}
-
-int velocity_dmitry(){
-  int pressure_low_limit = 10;
-  Pressure = capteur.readFloatPressure();
-  Pressure_Delta = constrain(abs(Pressure - Calib_Pressure), pressure_low_limit, 127);
-
-  // setting up minimal pressure to start a sound
-  if (Pressure_Delta <= pressure_low_limit){
-    // we have to get to send message controller to zero once it got to zero
-    // maybe setting curr_velocity to 1 will solve the button press -> move problem
-    curr_velocity = 1;
-    velocity = 0;
-  }
-  else {
-    //we assume the delta has been constrained between 10 and 127,
-    //or else this function will not work.
-    velocity = int((log(float(Pressure_Delta)/100.0)+4.8)/0.03814);
-    velocity_active = true;
-  }
-
-  if ((velocity_active) && (curr_velocity != velocity)) {
-    curr_velocity = velocity;
-    velocity_active = false;
-  }
-  if(DEBUG){
-    test_curve(Pressure, Pressure_Delta, velocity);
-  }
-  return curr_velocity;
 }
 
 int note(uint8_t sens_soufflet, uint8_t index, uint8_t octave, int velocity){//, uint8_t oldStatePousser, uint8_t oldStateTirer
@@ -254,26 +153,44 @@ int note(uint8_t sens_soufflet, uint8_t index, uint8_t octave, int velocity){//,
   }
 }
 
-void loop() {
-  float pressure=0;
-  int expression;
+void test_curve(int c){
+  Serial.println(c);
+}
 
-  // Moyenne de pression
-  for (size_t i = 0; i < pressureLiveMesure; i++) {
-    pressure += capteur.readFloatPressure();
+int velocity_computation() {
+  int pressureCount = 4;
+  Pressure = 0;
+  // make a test to avoid mistakes and jumps in pressure;
+  for (size_t i = 0; i < pressureCount; i++) {
+    Pressure += capteur.readFloatPressure();
   }
-  pressure=pressure/pressureLiveMesure;
-  // fin de la moyenne des pressions
+  Pressure = Pressure / pressureCount;
+  Pressure_Delta = abs(Pressure - Calib_Pressure);
+  // Pressure_Delta = int(0.000014*pow(Pressure_Delta-162,3) + 0.01*Pressure_Delta)+99;
+  Pressure_Delta = int((log(float(Pressure_Delta) / 300) + 2) * 21)+40;
 
-  // expression = velocity_dmitry();
+  if (Pressure_Delta > 127){
+    Pressure_Delta = 127;
+  }
+  if(Pressure_Delta < 20){
+    Pressure_Delta = 20;
+  }
+  // setting up minimal pressure to start a sound
+  // setting controller to zero once it got to zero
+  if (Pressure_Delta < 7){
+    curr_velocity = 0;
+  }
 
-  expression = velocity_jason();
+  else if (Pressure_Delta >= 7) {
+    velocity = Pressure_Delta;
+    curr_velocity = velocity;
+  }
+  return curr_velocity;
+}
 
-  oldPressure = pressure;
-
-
+void loop() {
   int pousserTirer = 0;
-  if(pressure > Calib_Pressure){
+  if(Pressure > Calib_Pressure){
     pousserTirer = 1;
   }else{
     pousserTirer = 0;
@@ -282,15 +199,19 @@ void loop() {
   for (uint8_t i=0; i < 15; i++){
     if(!DEBUG){
        isButtonPressed += note(pousserTirer,i,3, 127);
-       // Only for one hand
-       MIDI.sendControlChange(11,expression, 1);
-
-
     }
   }
   if(isButtonPressed == 0){
-    Calib_Pressure = (Calib_Pressure * 99 + pressure)/100;
+    Calib_Pressure = (Calib_Pressure * 99 + Pressure)/100;
   }
+  int oldExpression = curr_velocity;
+  int expression = velocity_computation();
 
-
+  if(DEBUG){
+    test_curve(expression);
+  }
+  if(!DEBUG && oldExpression != expression){
+    MIDI.sendControlChange(11,expression, 1);
+    oldExpression = expression;
+  }
 }
