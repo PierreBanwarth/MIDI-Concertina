@@ -18,18 +18,18 @@ uint8_t oldStateTirer[] =   {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 // main gauche
 //                    2     3    4    5    6    7     8   9    10   11   12   14   15  16  17
-uint8_t pousser[] = {Gn1, Fn1 , Bn1, As1, Dn2, Fn2, Bb2, Gn2, Eb2, An2, En3, An2, Cn3, 0, Fs2};
-uint8_t tirer[] =   {Cn1, En1 , Gn1, An1, Cn2, En2, Cs2, An2, Gs2, Gn2, Dn3, Gn2, Bn2, 0, Dn2};
+// uint8_t pousser[] = {Gn1, Fn1 , Bn1, As1, Dn2, Fn2, Bb2, Gn2, Eb2, An2, En3, An2, Cn3, 0, Fs2};
+// uint8_t tirer[] =   {Cn1, En1 , Gn1, An1, Cn2, En2, Cs2, An2, Gs2, Gn2, Dn3, Gn2, Bn2, 0, Dn2};
 // Main droite
                   // 3  3   4    5    6    7     8   9    10   11   12   14   15  16  17
-// uint8_t pousser[] = {0, 0, Bn2, Ds3, Dn3, Fn3, Ds3, Gn3, As3, An3, En3, An3, Cn4, 0, Fs3};
-// uint8_t tirer[]   = {0, 0, Cn3, Cs3, En3, Gn3, Cs3, Gs3, Cs3, Cn3, Gn4, Bn3, Dn4, 0, Gn3};
+uint8_t pousser[] = {Dn1, An1, Bn2, Ds3, Dn3, Fn3, Ds3, Gn3, As3, An3, En3, An3, Cn4, 0, Fs3};
+uint8_t tirer[]   = {Dn1, An1, Cn3, Cs3, En3, Gn3, Cs3, Gs3, Cs3, Cn3, Gn4, Bn3, Dn4, 0, Gn3};
 
 
 // for both hands
 uint8_t pinButton[] = {2,3,4,5,6,7,8,9,10,11,12,14,15,16,17};
 
-uint8_t initCountSetup = 32;
+uint8_t initCountSetup = 100;
 uint8_t pressureLiveMesure = 4;
 
 
@@ -51,7 +51,6 @@ void setup() {
   // Configuration de la broche 12 en tant qu'entree numerique.
   MIDI.begin(1);
   // normal use
-
   if(DEBUG){
      Serial.begin(9600);
   }else{
@@ -59,16 +58,15 @@ void setup() {
   }
   // for testing function
   for (size_t pin = 0; pin < 15; pin++) {
-    /* code */
     pinMode(pinButton[pin],INPUT);
     digitalWrite(pinButton[pin],HIGH);
-
   }
 
   while (!Serial) {
     // Attente de l'ouverture du port série pour Arduino LEONARDO
   }
   //configuration du capteur
+
   capteur.settings.commInterface = I2C_MODE;
   capteur.settings.I2CAddress = 0x76;
   capteur.settings.runMode = 3;
@@ -89,6 +87,20 @@ void setup() {
   Calib_Pressure = sumPressureValueSetup / initCountSetup;
   Calib_Pressure = Calib_Pressure;
 
+}
+// Note using drone
+void noteOn(int noteToPlay, int noteA, int noteB, int octave, int velocity){
+  if(noteA == noteB){
+    MIDI.sendNoteOn(noteToPlay + octave ,velocity*2/3,1);
+  }else{
+    MIDI.sendNoteOn(noteToPlay + octave ,velocity,1);
+  }
+}
+
+void noteOff(int noteToShutdown, int noteA, int noteB, int octave){
+  if(noteA != noteB){
+    MIDI.sendNoteOff(noteToShutdown + octave,0,1);
+  }
 }
 
 int note(uint8_t sens_soufflet, uint8_t index, uint8_t octave, int velocity){//, uint8_t oldStatePousser, uint8_t oldStateTirer
@@ -112,11 +124,10 @@ int note(uint8_t sens_soufflet, uint8_t index, uint8_t octave, int velocity){//,
         if(sens_soufflet == LOW ){
           // on pousse sur le bouton et sur le soufflet
           if(oldStatePousser[index] == BUTTON_RELEASED){
-            MIDI.sendNoteOn(noteA + newOctave ,velocity,1);
-
+            noteOn(noteA, noteA, noteB, newOctave, velocity);
             oldStatePousser[index] = BUTTON_PRESSED;
             if( oldStateTirer[index] == BUTTON_PRESSED){
-              MIDI.sendNoteOff(noteB + newOctave ,0,1);
+              noteOff(noteB, noteA, noteB, newOctave);
               oldStateTirer[index] = BUTTON_RELEASED;
             }
           }
@@ -124,10 +135,10 @@ int note(uint8_t sens_soufflet, uint8_t index, uint8_t octave, int velocity){//,
         else
         {// on tire sur le soufflet et on appuie sur le bouton
           if(oldStateTirer[index] == 0){
-            MIDI.sendNoteOn(noteB + newOctave,velocity,1);
+            noteOn(noteB, noteA, noteB, newOctave, velocity);
             oldStateTirer[index] = BUTTON_PRESSED;
             if(oldStatePousser[index] == BUTTON_PRESSED){
-              MIDI.sendNoteOff(noteA + newOctave,0,1);
+              noteOff(noteA, noteA, noteB, newOctave);
               oldStatePousser[index] = BUTTON_RELEASED;
             }
           }
@@ -158,7 +169,7 @@ void test_curve(int c){
 }
 
 int velocity_computation() {
-  int pressureCount = 4;
+  size_t pressureCount = 4;
   Pressure = 0;
   // make a test to avoid mistakes and jumps in pressure;
   for (size_t i = 0; i < pressureCount; i++) {
@@ -166,8 +177,10 @@ int velocity_computation() {
   }
   Pressure = Pressure / pressureCount;
   Pressure_Delta = abs(Pressure - Calib_Pressure);
-  // Pressure_Delta = int(0.000014*pow(Pressure_Delta-162,3) + 0.01*Pressure_Delta)+99;
-  Pressure_Delta = int((log(float(Pressure_Delta) / 300) + 2) * 21)+40;
+  Pressure_Delta = int((log(float(Pressure_Delta) / 80) + 2) * 19)+40;
+
+  // TUTO Pressure_Delta = int(0.000014*pow(Pressure_Delta-162,3) + 0.01*Pressure_Delta)+99;
+  //NIELS  int((log(float(p_offset) / 55) + 6) * 27) ;
 
   if (Pressure_Delta > 127){
     Pressure_Delta = 127;
@@ -189,29 +202,31 @@ int velocity_computation() {
 }
 
 void loop() {
-  int pousserTirer = 0;
+  uint8_t pousserTirer = 0;
+  uint8_t isButtonPressed;
+  uint8_t oldExpression;
+  uint8_t expression;
+  uint8_t i;
+
   if(Pressure > Calib_Pressure){
     pousserTirer = 1;
   }else{
     pousserTirer = 0;
   }
-  uint8_t isButtonPressed = 0;
-  for (uint8_t i=0; i < 15; i++){
+
+  isButtonPressed = 0;
+  for (i=0; i < 15; i++){
     if(!DEBUG){
        isButtonPressed += note(pousserTirer,i,3, 127);
     }
   }
-  if(isButtonPressed == 0){
-    Calib_Pressure = (Calib_Pressure * 99 + Pressure)/100;
-  }
-  int oldExpression = curr_velocity;
-  int expression = velocity_computation();
-
+  oldExpression = curr_velocity;
+  expression = velocity_computation();
   if(DEBUG){
     test_curve(expression);
   }
   if(!DEBUG && oldExpression != expression){
-    MIDI.sendControlChange(11,expression, 1);
+    // MIDI.sendControlChange(11,expression, 1);
     oldExpression = expression;
   }
 }
