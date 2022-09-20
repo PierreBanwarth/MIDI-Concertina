@@ -1,4 +1,5 @@
-![Sans titre](https://user-images.githubusercontent.com/7162775/191378614-7bc1c7c1-4d98-4ba1-96f5-f6df584b8950.png)
+![Sans titre (1)](https://user-images.githubusercontent.com/7162775/191378891-29a2778e-889a-44ac-a90c-f2cbeea08b55.png)
+
 # MIDI-concertina
 
 This is The Github project wich his a personnal work about Making an electronic version of my concertina,
