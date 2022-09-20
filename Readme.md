@@ -1,4 +1,4 @@
-![Sans titre (1)](https://user-images.githubusercontent.com/7162775/191378891-29a2778e-889a-44ac-a90c-f2cbeea08b55.png)
+<img src="https://user-images.githubusercontent.com/7162775/191379148-af449447-4c98-4340-b313-ac48eb72af3b.png"  width="250">
 
 # MIDI-concertina
 
