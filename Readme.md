@@ -2,6 +2,8 @@
 
 # MIDI-concertina
 
+[Journal de developpement ici](https://github.com/PierreBanwarth/MIDI-Accordina/blob/main/journal.md)
+
 This is The Github project wich his a personnal work about Making an electronic version of my concertina,
 
 Goal is to play by night with my headphones for my neighboors and maybe with my band BernyTradSchool
